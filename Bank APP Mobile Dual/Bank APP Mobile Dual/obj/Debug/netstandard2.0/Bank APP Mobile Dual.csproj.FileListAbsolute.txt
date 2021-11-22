@@ -1,0 +1,16 @@
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\bin\Debug\netstandard2.0\Bank APP Mobile Dual.deps.json
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\bin\Debug\netstandard2.0\Bank APP Mobile Dual.dll
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\bin\Debug\netstandard2.0\ref\Bank APP Mobile Dual.dll
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\bin\Debug\netstandard2.0\Bank APP Mobile Dual.pdb
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.AssemblyInfoInputs.cache
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.AssemblyInfo.cs
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.csproj.CoreCompileInputs.cache
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.dll
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\ref\Bank APP Mobile Dual.dll
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.pdb
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.csproj.AssemblyReference.cache
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Pages\FrontPage.xaml.g.cs
+C:\Users\Hakan\source\repos\Bank APP Mobile Dual\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Pages\MainPage.xaml.g.cs
