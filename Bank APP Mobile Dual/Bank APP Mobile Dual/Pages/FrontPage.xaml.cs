@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank_APP_Mobile_Dual.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,20 @@ namespace Bank_APP_Mobile_Dual.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FrontPage : ContentPage
     {
+        private List<UserInfos> UserInfos = new List<UserInfos>();
+        private int currentBalance = 15000;
+        private int accountNumber = 1293923942;
+
         public FrontPage()
         {
             InitializeComponent();
 
             Title = "Bank Application";
             BackgroundColor = Color.DarkSlateBlue;
-            int currentBalance = 15000;
-            int accountNumber = 1293923942;
+            
             string accountName = "Main Account";
 
+            UserInfos.Add(new UserInfos(accountNumber, accountName));
             Frame depositLayout = new Frame {
                 Padding = 1,
                 CornerRadius = 3,
@@ -31,41 +36,48 @@ namespace Bank_APP_Mobile_Dual.Pages
                     BackgroundColor = Color.DarkSlateBlue,
                     Children =
                     {
-                        LabelMaker($"Deposit Amount:", 18, TextAlignment.Start, TextAlignment.Start, Color.White, FontAttributes.None),
+                        LabelMaker($"Deposit Amount:", 18, TextAlignment.Center, TextAlignment.Start, Color.White, FontAttributes.None),
                         new Entry{}
                     }
                 }
             };
 
-            var underLayout = new StackLayout
+            StackLayout underLayout = new StackLayout
             {
                 Margin = new Thickness(10),
                 Spacing = 25,
                 BackgroundColor = Color.DarkSlateBlue,
                 Children =
                 {
-                    LabelMaker($"Account Name: {accountName}", 14, TextAlignment.Center, TextAlignment.Start, Color.White, FontAttributes.None),
+                    LabelMaker($"Account Info:", 14, TextAlignment.Center, TextAlignment.Start, Color.White, FontAttributes.Bold),
                     new Frame{
                         Padding = 1,
                         CornerRadius = 3,
-                        Content = new StackLayout
-                        {
-                            Spacing = 3,
+                        Content =
+                        new StackLayout {
                             BackgroundColor = Color.DarkSlateBlue,
-                            Children =
-                            {
-
-                                LabelMaker($"Account Number: {accountNumber}", 14, TextAlignment.Center, TextAlignment.Start, Color.White, FontAttributes.None),
-                                LabelMaker($"Current Balance: {currentBalance}", 18, TextAlignment.Center, TextAlignment.Start, Color.White, FontAttributes.Bold),
-                                AccountDropDown(accountNumber),
+                            Children = {
+                                AccountDropDown("Name"),
+                                AccountDropDown("Number")
                             }
-                        },
+                        }
                     },
+                    new Frame{
+                        Padding = 1,
+                        CornerRadius = 3,
+                        Content =
+                        new StackLayout
+                        {
+                                BackgroundColor = Color.DarkSlateBlue,
+                                Children ={
+                                LabelMaker($"Current Balance: \n{currentBalance}", 18, TextAlignment.Center, TextAlignment.Start, Color.White, FontAttributes.Bold),
+                                
+                            }
+                        }
+                    },    
                     depositLayout,
                 },
             };
-
-           
 
             var layout = new StackLayout
             {
@@ -100,15 +112,25 @@ namespace Bank_APP_Mobile_Dual.Pages
 
         }
 
-        private Picker AccountDropDown(int accountNumber)
+        private Picker AccountDropDown(string cases)
         {
-            List<string> AccountInfo = new List<string>();
-            AccountInfo.Add(accountNumber.ToString());
-            var _picker = new Picker();
-            foreach (var item in AccountInfo)
+            Picker _picker = new Picker();
+            if (cases == "Name")
             {
-                _picker.Items.Add(item);
+                foreach (UserInfos item in UserInfos)
+                {
+                    _picker.Items.Add($"{item.AccountName}");
+                }
             }
+            else if (cases == "Number")
+            {
+                foreach (UserInfos item in UserInfos)
+                {
+                    _picker.Items.Add($"{item.AccountNumber}");
+                }
+            }
+            _picker.HorizontalTextAlignment = TextAlignment.Center;
+            _picker.SelectedIndex = 0;
             _picker.SelectedIndexChanged += Picker_SelectedIndexChanged;
             return _picker;
         }
