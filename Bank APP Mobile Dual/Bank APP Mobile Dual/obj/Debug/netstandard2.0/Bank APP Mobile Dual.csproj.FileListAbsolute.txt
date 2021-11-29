@@ -33,3 +33,4 @@ C:\Users\Hakan\source\repos\bank-app-hakan\Bank APP Mobile Dual\Bank APP Mobile 
 C:\Users\Hakan\source\repos\bank-app-hakan\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.dll
 C:\Users\Hakan\source\repos\bank-app-hakan\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\ref\Bank APP Mobile Dual.dll
 C:\Users\Hakan\source\repos\bank-app-hakan\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Bank APP Mobile Dual.pdb
+C:\Users\Hakan\source\repos\bank-app-hakan\Bank APP Mobile Dual\Bank APP Mobile Dual\obj\Debug\netstandard2.0\Pages\Loginside.xaml.g.cs

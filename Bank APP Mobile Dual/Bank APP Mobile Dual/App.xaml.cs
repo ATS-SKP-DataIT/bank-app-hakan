@@ -12,7 +12,8 @@ namespace Bank_APP_Mobile_Dual
             InitializeComponent();
 
             //   MainPage = new MainPage();
-            MainPage = new FrontPage();
+            // MainPage = new FrontPage();
+            MainPage = new Loginside();
         }
 
         protected override void OnStart()
