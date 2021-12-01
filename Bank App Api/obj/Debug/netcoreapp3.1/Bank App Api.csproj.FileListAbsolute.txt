@@ -1,0 +1,41 @@
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Bank App Api.exe
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Bank App Api.deps.json
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Bank App Api.runtimeconfig.json
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Bank App Api.runtimeconfig.dev.json
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Bank App Api.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Bank App Api.pdb
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.csproj.AssemblyReference.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.AssemblyInfoInputs.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.AssemblyInfo.cs
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.csproj.CoreCompileInputs.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\staticwebassets\Bank App Api.StaticWebAssets.Manifest.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\staticwebassets\Bank App Api.StaticWebAssets.xml
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\scopedcss\bundle\Bank App Api.styles.css
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.RazorTargetAssemblyInfo.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.pdb
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.genruntimeconfig.cache
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\DnsClient.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\NLog.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\SharpCompress.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\linux\native\libsnappy64.so
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\linux\native\libzstd.so
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\osx\native\libsnappy64.dylib
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\osx\native\libzstd.dylib
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\linux\native\libmongocrypt.so
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocrypt.dll
+C:\Users\Hakan\source\repos\Bank App Api\Bank App Api\obj\Debug\netcoreapp3.1\Bank App Api.csproj.CopyComplete
