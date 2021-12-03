@@ -1,52 +1,64 @@
-﻿using Bank_App_Api.Crud;
-using Bank_App_Api.Methods;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using NLog;
+using Bank_App_Api.Crud;
+using Bank_App_Api.Models;
 
+using static Bank_App_Api.Helper_Classes.Salting;
 namespace Bank_App_Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class LoginController : ControllerBase
     {
+        //   readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly LoginCrud _login;
-        
-        public LoginController(LoginCrud login)
+        private readonly SaltCrud _salt;
+        public LoginController(LoginCrud login, SaltCrud salt)
         {
-            _login = login; 
+            _login = login;
+            _salt = salt;
         }
 
-        // GET: api/<LoginController>
+        //Get list of all users
         [HttpGet]
         public ActionResult<List<LoginModel>> Get() =>
-                 _login.Get().Result;
+                _login.Get();
 
-        // GET api/<LoginController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<LoginController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult LoginConfirm([FromBody] JsonElement LoginJson)
         {
-        }
+            try
+            {
+                //Crypto?
+                var content = JsonConvert.DeserializeObject<LoginModel>(LoginJson.GetRawText());
+                LoginModel SavedContent = _login.GetUserByUserName(content.UserName);
+                if (SavedContent == null)
+                    SavedContent = _login.GetUser(content.UserName);
+                if (SavedContent == null)
+                    return NotFound();
 
-        // PUT api/<LoginController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+                //salting
+                bool loginResult = false;
+                //    if (HashSalt(content.Password, Convert.FromBase64String(_salt.GetUserById(SavedContent.Id).SaltPass)).Pass == SavedContent.Password)
 
-        // DELETE api/<LoginController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                var id = _salt.GetUserById(SavedContent.Id).SaltPass;
+                var passTest = Convert.FromBase64String(id);
+                var result = HashSalt(content.Password, passTest).Pass == SavedContent.Password;
+                if (result)
+                    loginResult = true;
+                return Ok(loginResult);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error Code 1.2 - Error at HTTPPOST - {e.Message}");
+            }
         }
     }
 }

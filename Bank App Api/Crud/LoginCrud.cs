@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using NLog;
+using Bank_App_Api.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MongoDB.Bson;
-using Newtonsoft.Json;
-using NLog;
-using System.IO;
-using MongoDB.Driver;
-using Bank_App_Api.Methods;
 
 namespace Bank_App_Api.Crud
 {
@@ -16,73 +15,49 @@ namespace Bank_App_Api.Crud
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         //DB Initialazation, with input saved in launchSettings.json
-        private readonly IMongoCollection<LoginModel> _users;
+        private readonly IMongoCollection<LoginModel> _login;
         public LoginCrud(IDBElements settings)
         {
-            //   try
-            // {
-            /*
-            using (StreamReader r = new StreamReader(@"C:\Users\Hakan\source\repos\bank-app-hakan\Bank APP Mobile Dual\Bank APP Mobile Dual\appsettings.json"))
+            try
             {
-                string json = r.ReadToEnd();
-                List<DBSettings> items = JsonConvert.DeserializeObject<List<DBSettings>>(json);
-            } */
-            string currentDir = Directory.GetCurrentDirectory();
-            StreamReader r = new StreamReader($@"TextFile1.txt");
-            string json = r.ReadToEnd();
-            List<IDBElements> items = JsonConvert.DeserializeObject<List<IDBElements>>(json);
-
-
-
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.Database);
-            _users = database.GetCollection<LoginModel>(settings.Collection);
-            /*       }
-                   catch (Exception e)
-                   {
-                       logger.Error($"Error Code 4.1 - Database connection establishment\n{e.Message}");
-                       throw new Exception("Error Code 4.1 - Database connection establishment");
-
-                   }*/
+                var client = new MongoClient(settings.ConnectionString);
+                var database = client.GetDatabase(settings.Database);
+                _login = database.GetCollection<LoginModel>("Login");
+            }
+            catch (Exception e)
+            {
+                logger.Error($"Error Code 1.1 - Database connection establishment\n{e.Message}");
+                throw new Exception("Error Code 1.1 - Database connection establishment");
+            }
         }
 
-        //Get all users
-        public async Task<List<LoginModel>> Get() =>
-            await Task.Run(() =>
-            _users.Find(x => true).ToList());
+        //Get All User Login info
+        public List<LoginModel> Get() =>
+           Task.Run(() => _login.Find(x => true).ToList()).Result;
 
-        //Get Specific user by Username (for loging mainly)
-        public async Task<LoginModel> GetUser(string username) =>
-          await Task.Run(() =>
-          _users.Find(x => x.UserName == username).FirstOrDefault());
-
-        //Get Specific user by Email (for loging mainly)
-        public async Task<LoginModel> GetUserByEmail(string email) =>
-          await Task.Run(() =>
-          _users.Find(x => x.Email == email).FirstOrDefault());
+        //Get Specific user by username (for login)
+        public LoginModel GetUser(string Email) =>
+            Task.Run(() => _login.Find(x => x.Email == Email).FirstOrDefault()).Result;
 
 
-        //Get specific user by Id
-        public async Task<LoginModel> GetUserById(ObjectId id) =>
-           await Task.Run(() =>
-           _users.Find(x => x.Id == id).FirstOrDefault());
+        //Get Specific user by username (for login)
+        public LoginModel GetUserByUserName(string userName) =>
+            Task.Run(() => _login.Find(x => x.UserName == userName).FirstOrDefault()).Result;
 
-        //Create new user
-        public async Task<LoginModel> Create(LoginModel user)
-        {
-            await Task.Run(() =>
-            _users.InsertOne(user));
-            return user;
-        }
+        //Get a Specific user login by Id 
+        public LoginModel GetLoginById(ObjectId id) =>
+           Task.Run(() => _login.Find(x => x.Id == id).FirstOrDefault()).Result;
 
-        //Update existing user
-        public async void Update(string username, LoginModel updatedUser) =>
-           await Task.Run(() =>
-           _users.ReplaceOne(x => x.UserName == username, updatedUser));
+        //Add new user login to UserLogin DB
+        public void Create(LoginModel content) =>
+            Task.Run(() => _login.InsertOne(content));
 
-        //Delete existing user
-        public async void Delete(ObjectId id) =>
-           await Task.Run(() =>
-           _users.DeleteOne(x => x.Id == id));
+        //Update exising Login
+        public void Update(string username, LoginModel updatedUser) =>
+           Task.Run(() => _login.ReplaceOne(x => x.UserName == username, updatedUser));
+
+        //Delete existing Login
+        public void Delete(ObjectId id) =>
+           Task.Run(() => _login.DeleteOne(x => x.Id == id));
     }
 }

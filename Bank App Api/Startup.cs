@@ -1,5 +1,5 @@
 using Bank_App_Api.Crud;
-using Bank_App_Api.Methods;
+using Bank_App_Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +34,9 @@ namespace Bank_App_Api
             services.AddSingleton<IDBElements>(x =>
                 x.GetRequiredService<IOptions<DBElements>>().Value);
             services.AddSingleton<LoginCrud>();
+            services.AddSingleton<UserCrud>();
+            services.AddSingleton<SaltCrud>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
