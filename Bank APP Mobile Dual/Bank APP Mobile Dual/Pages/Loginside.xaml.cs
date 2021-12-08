@@ -1,5 +1,4 @@
-﻿using Bank_APP_Mobile_Dual.Helper_Classes.CRUDS;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +14,6 @@ namespace Bank_APP_Mobile_Dual.Pages
         public Loginside()
         {
             InitializeComponent();
-            LoginsideCrud crud = new LoginsideCrud(null);
         }
 
 

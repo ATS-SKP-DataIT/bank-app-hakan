@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bank_APP_Mobile_Dual.Pages.CreateUser">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DarkSlateBlue">
+            <Grid x:Name="Grid_main">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+               
+                <Label Text="Create User Section"
+                       HorizontalOptions="CenterAndExpand" 
+                       FontSize="25"
+                       TextColor="White"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="1"/>
+
+                <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label Text="User Name"
+                       HorizontalOptions="Center" 
+                       FontSize="20"
+                       TextColor="White"
+                       VerticalOptions="Start"
+                       />
+                    <Entry x:Name="Entry_UserName" VerticalOptions="End"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label Text="Password"
+                       HorizontalOptions="Center" 
+                       FontSize="20"
+                       TextColor="White"/>
+                    <Entry x:Name="Entry_Pwd" IsPassword="True"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label Text="Email"
+                       HorizontalOptions="Center" 
+                       FontSize="20"
+                       TextColor="White"/>
+                    <Entry x:Name="Entry_Email"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label Text="First Name"
+                       HorizontalOptions="Center" 
+                       FontSize="20"
+                       TextColor="White"/>
+                    <Entry x:Name="Entry_FirstName"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label Text="Last Name"
+                       HorizontalOptions="Center" 
+                       FontSize="20"
+                       TextColor="White"/>
+                    <Entry x:Name="Entry_LastName"/>
+                </StackLayout>
+                <Button x:Name="CreateUserBtn" Text="Create" Grid.Column="1" VerticalOptions="Start" Grid.Row="12" FontSize="14" FontAttributes="Bold" Clicked="CreateUserBtn_Clicked"  />
+                <Button x:Name="CancelBtn" Text="Cancel" Grid.Column="2" VerticalOptions="Start" Grid.Row="12" FontSize="14" FontAttributes="Bold" Clicked="CancelBtn_Clicked" />
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

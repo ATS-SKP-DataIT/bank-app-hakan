@@ -19,4 +19,5 @@ namespace Bank_APP_Mobile_Dual.Models
         public int AccountNumber { get; set; }
         public string AccountName { get; set; } 
     }
+
 }
