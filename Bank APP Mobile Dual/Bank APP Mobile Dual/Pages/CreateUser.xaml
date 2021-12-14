@@ -4,23 +4,23 @@
              x:Class="Bank_APP_Mobile_Dual.Pages.CreateUser">
     <ContentPage.Content>
         <StackLayout BackgroundColor="DarkSlateBlue">
-            <Grid x:Name="Grid_main">
+            <Grid x:Name="Grid_CreateUser">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -35,7 +35,7 @@
                        TextColor="White"
                        Grid.Column="1"
                        Grid.ColumnSpan="2"
-                       Grid.Row="1"/>
+                       Grid.Row="0"/>
 
                 <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
                     <Label Text="User Name"
@@ -44,7 +44,7 @@
                        TextColor="White"
                        VerticalOptions="Start"
                        />
-                    <Entry x:Name="Entry_UserName" VerticalOptions="End"/>
+                    <Entry x:Name="Entry_UserName" VerticalOptions="FillAndExpand" BackgroundColor="White" TextColor="Black" Placeholder="User Name"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
@@ -52,7 +52,7 @@
                        HorizontalOptions="Center" 
                        FontSize="20"
                        TextColor="White"/>
-                    <Entry x:Name="Entry_Pwd" IsPassword="True"/>
+                    <Entry x:Name="Entry_Pwd" IsPassword="True" BackgroundColor="White" TextColor="Black" Placeholder="Password"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
@@ -60,7 +60,7 @@
                        HorizontalOptions="Center" 
                        FontSize="20"
                        TextColor="White"/>
-                    <Entry x:Name="Entry_Email"/>
+                    <Entry x:Name="Entry_Email" BackgroundColor="White" TextColor="Black" Placeholder="Email"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
@@ -68,7 +68,7 @@
                        HorizontalOptions="Center" 
                        FontSize="20"
                        TextColor="White"/>
-                    <Entry x:Name="Entry_FirstName"/>
+                    <Entry x:Name="Entry_FirstName" BackgroundColor="White" TextColor="Black" Placeholder="First Name"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2">
@@ -76,10 +76,11 @@
                        HorizontalOptions="Center" 
                        FontSize="20"
                        TextColor="White"/>
-                    <Entry x:Name="Entry_LastName"/>
+                    <Entry x:Name="Entry_LastName" BackgroundColor="White" TextColor="Black" Placeholder="Last Name"/>
                 </StackLayout>
-                <Button x:Name="CreateUserBtn" Text="Create" Grid.Column="1" VerticalOptions="Start" Grid.Row="12" FontSize="14" FontAttributes="Bold" Clicked="CreateUserBtn_Clicked"  />
-                <Button x:Name="CancelBtn" Text="Cancel" Grid.Column="2" VerticalOptions="Start" Grid.Row="12" FontSize="14" FontAttributes="Bold" Clicked="CancelBtn_Clicked" />
+                <Button x:Name="CreateUserBtn" Text="Create" Grid.Column="1" VerticalOptions="Start" Grid.Row="12" FontSize="14" FontAttributes="Bold" Clicked="CreateUserBtn_Clicked" BackgroundColor="#2196f3" TextColor="Black" Margin="1,5" BorderColor="Black" BorderWidth="1" />
+
+                <Button x:Name="CancelBtn" Text="Cancel" Grid.Column="2" VerticalOptions="Center" Grid.Row="12" FontSize="14" FontAttributes="Bold" Clicked="CancelBtn_Clicked"  BorderColor="Black" BorderWidth="1" Margin="1,5"/>
             </Grid>
 
         </StackLayout>

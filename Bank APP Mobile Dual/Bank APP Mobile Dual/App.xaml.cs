@@ -13,8 +13,8 @@ namespace Bank_APP_Mobile_Dual
 
             //   MainPage = new MainPage();
             // MainPage = new FrontPage();
-            // MainPage = new Loginside();
-            MainPage = new CreateUser();
+             MainPage = new NavigationPage(new Loginside()) { BarBackgroundColor = Color.DarkSlateBlue };
+           // MainPage = new CreateUser();
         }
 
         protected override void OnStart()

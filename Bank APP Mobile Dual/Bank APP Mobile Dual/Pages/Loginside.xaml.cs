@@ -16,6 +16,13 @@ namespace Bank_APP_Mobile_Dual.Pages
             InitializeComponent();
         }
 
+        private void SignIn_Clicked(object sender, EventArgs e)
+        {
 
+        }
+        private void CreateUser_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateUser());
+        }
     }
 }

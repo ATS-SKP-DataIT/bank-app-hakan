@@ -3,10 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Bank_APP_Mobile_Dual.Pages.Loginside">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid BackgroundColor="DarkSlateBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Login Page" Grid.Row="0" Grid.Column="1" TextColor="White" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+            <Label Text="User Name / Email:" Grid.Row="1" Grid.Column="1" TextColor="White"  FontSize="20" VerticalOptions="End"/>
+            <Entry x:Name="LoginSide_Entry_UserName" Grid.Row="2" Grid.Column="1" BackgroundColor="White" TextColor="Black" Placeholder="Enter User Name / Email"/>
+          
+            <Label Text="Password:" Grid.Row="3" Grid.Column="1" TextColor="White" FontSize="20" VerticalOptions="End"/>
+            <Entry x:Name="LoginSide_Entry_PW" Grid.Row="4" Grid.Column="1" BackgroundColor="White" TextColor="Black" Placeholder="Enter Password" IsPassword="True"/>
+            
+            <Button Text="Sign In" Clicked="SignIn_Clicked" Grid.Row="5" Grid.Column="1" Margin="1,5" BorderColor="Black" BorderWidth="2" BackgroundColor="#2196f3" TextColor="Black" />
+            <Label Text="Or" Grid.Row="6" Grid.Column="1" TextColor="LightGray"  FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Italic"/>
+            <Button Text="Create User" Clicked="CreateUser_Clicked" Grid.Row="7" Grid.Column="1" Margin="1,5" BorderColor="Black" BorderWidth="1"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
