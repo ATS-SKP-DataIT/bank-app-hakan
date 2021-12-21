@@ -37,6 +37,12 @@ namespace Bank_App_Api
             services.AddSingleton<UserCrud>();
             services.AddSingleton<SaltCrud>();
 
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +58,7 @@ namespace Bank_App_Api
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(a => a.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

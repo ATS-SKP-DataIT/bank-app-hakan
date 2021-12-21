@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bank_App_Api.Models;
+using System.Net;
 
 namespace Bank_App_Api.Crud
 {
@@ -29,14 +30,21 @@ namespace Bank_App_Api.Crud
             {
                 logger.Error($"Error Code 4.1 - Database connection establishment\n{e.Message}");
                 throw new Exception("Error Code 4.1 - Database connection establishment");
-
+                
             }
         }
 
-        //Get all users
+
+        //Get all users 
         public async Task<List<UserModel>> Get() =>
             await Task.Run(() =>
             _users.Find(x => true).ToList());
+        
+        public List<UserModel> GetTest()
+        {
+            var test = _users.Find(x => true).ToList();
+            return test;
+        }
 
         //Get Specific user by Username (for loging mainly)
         public async Task<UserModel> GetUser(string username) =>
