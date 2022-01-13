@@ -34,17 +34,10 @@ namespace Bank_App_Api.Crud
             }
         }
 
-
         //Get all users 
         public async Task<List<UserModel>> Get() =>
             await Task.Run(() =>
             _users.Find(x => true).ToList());
-        
-        public List<UserModel> GetTest()
-        {
-            var test = _users.Find(x => true).ToList();
-            return test;
-        }
 
         //Get Specific user by Username (for loging mainly)
         public async Task<UserModel> GetUser(string username) =>

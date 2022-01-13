@@ -32,18 +32,12 @@ namespace Bank_App_Api.Controllers
             _login = login;
             _salt = salt;
         }
-        /*
+        
+
         //Get all users
         [HttpGet]
          public ActionResult<List<UserModel>> Get() =>
            _users.Get().Result;
-        */
-        [HttpGet]
-        public ActionResult<List<UserModel>> GetTest() =>
-           _users.GetTest();
-        
-       
-
 
         [HttpGet("{username}")]
         public ActionResult Get(string username) =>
