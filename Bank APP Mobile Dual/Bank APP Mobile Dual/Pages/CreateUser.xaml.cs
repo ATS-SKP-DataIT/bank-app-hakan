@@ -45,11 +45,11 @@ namespace Bank_APP_Mobile_Dual.Pages
                 EntryList[3].Text, //FirstName
                 EntryList[4].Text, //LastName
                 EntryList[1].Text); //Password
-                Task.Run(() => SendRequestAsync(JsonConvert.SerializeObject(newUser), "user")); 
+            Task.Run(() => SendRequest(JsonConvert.SerializeObject(newUser), "user"));
         }
 
 
-     
+
 
         private void CancelBtn_Clicked(object sender, EventArgs e)
         {

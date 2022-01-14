@@ -1,37 +1,36 @@
-﻿using System;
+﻿using Bank_APP_Mobile_Dual.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Bank_APP_Mobile_Dual.Helper_Classes
 {
     class APICall
     {
-        public static async Task SendRequestAsync(string json, string api)
+        public static string SendRequest(string json, string api)
         {
-            try
+            var url = $"https://10.0.2.2:49155/{api}";
+
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.Method = "POST";
+
+            httpRequest.ServerCertificateValidationCallback = delegate { return true; };
+            httpRequest.Accept = "application/json";
+            httpRequest.ContentType = "application/json";        
+
+            using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
             {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://localhost:44383/{api}");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    streamWriter.Write(json);
-                }
-
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    var result = streamReader.ReadToEnd();
-                }
+                streamWriter.Write(json);
             }
-            catch(Exception e)
+
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                //log exception here:
-                await App.Current.MainPage.DisplayAlert("Test Title", "Test", "OK");
+                return streamReader.ReadToEnd();
             }
         }
     }

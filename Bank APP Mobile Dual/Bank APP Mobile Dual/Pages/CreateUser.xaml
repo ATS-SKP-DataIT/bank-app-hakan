@@ -6,7 +6,7 @@
         <StackLayout BackgroundColor="DarkSlateBlue">
             <Grid x:Name="Grid_CreateUser">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2.5*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="2*"/>
@@ -20,7 +20,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2.5*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
