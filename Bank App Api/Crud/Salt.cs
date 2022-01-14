@@ -39,7 +39,7 @@ namespace Bank_App_Api.Crud
            Task.Run(() => _salt.Find(x => true).ToList()).Result;
 
         //Get a Specific user salt by Id 
-        public SaltModel GetUserById(ObjectId id) =>
+        public SaltModel GetUserById(ObjectId? id) =>
            Task.Run(() => _salt.Find(x => x.Id == id).FirstOrDefault()).Result;
 
         //Add new user salt 

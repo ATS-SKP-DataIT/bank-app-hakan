@@ -49,7 +49,7 @@ namespace Bank_App_Api.Controllers
         {
             try
             {
-                //Add checking if user already exits by username or email
+                //Checking if user already exits by username or email
                 var user = JsonConvert.DeserializeObject<NewUserModel>(jsUser.GetRawText());
                 var matchUserName = _users.GetUser(user.UserName).Result;
                 if (matchUserName != null || _users.GetUserByEmail(user.Email).Result != null)

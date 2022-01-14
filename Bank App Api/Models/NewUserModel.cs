@@ -70,4 +70,11 @@ namespace Bank_App_Api.Models
         string Password { get; set; }
         List<string> Recovery { get; set; }
     }
+    public class APILoginModel
+    {
+        public string UserName { get; set; }
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+    }
 }

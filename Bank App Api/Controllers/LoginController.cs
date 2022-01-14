@@ -37,7 +37,7 @@ namespace Bank_App_Api.Controllers
             try
             {
                 //Crypto?
-                var content = JsonConvert.DeserializeObject<LoginModel>(LoginJson.GetRawText());
+                var content = JsonConvert.DeserializeObject<APILoginModel>(LoginJson.GetRawText());
                 LoginModel SavedContent = _login.GetUserByUserName(content.UserName);
                 if (SavedContent == null)
                     SavedContent = _login.GetUser(content.UserName);
