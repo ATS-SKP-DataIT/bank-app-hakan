@@ -1,4 +1,5 @@
-﻿using Bank_APP_Mobile_Dual.Models;
+﻿using Bank_APP_Mobile_Dual.Helper_Classes;
+using Bank_APP_Mobile_Dual.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,8 @@ namespace Bank_APP_Mobile_Dual.Pages
                 EntryList[3].Text, //FirstName
                 EntryList[4].Text, //LastName
                 EntryList[1].Text); //Password
-            Task.Run(() => SendRequest(JsonConvert.SerializeObject(newUser), "user"));
+            Crypt crypt = new Crypt();
+            Task.Run(() => SendRequest(crypt.Encrypter(JsonConvert.SerializeObject(newUser), "13334448853"), "user", "UserCreationTemp563"));
         }
 
 

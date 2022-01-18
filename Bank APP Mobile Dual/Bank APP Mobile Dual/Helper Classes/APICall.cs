@@ -1,4 +1,5 @@
 ﻿using Bank_APP_Mobile_Dual.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +12,9 @@ namespace Bank_APP_Mobile_Dual.Helper_Classes
 {
     class APICall
     {
-        public static string SendRequest(string json, string api)
+        public static string SendRequest(string json, string api, string username)
         {
+            string TokenId = "1666723Dx";
             var url = $"https://10.0.2.2:49155/{api}";
 
             var httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -22,9 +24,17 @@ namespace Bank_APP_Mobile_Dual.Helper_Classes
             httpRequest.Accept = "application/json";
             httpRequest.ContentType = "application/json";        
 
+            //issue here to fix:
             using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
             {
-                streamWriter.Write(json);
+                streamWriter.Write(
+                    Convert.FromBase64String(
+                        JsonConvert.SerializeObject( 
+                            new APIReqModel {
+                                Json = json, 
+                                Token = TokenId, 
+                                Username = username}
+                            )));
             }
 
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
