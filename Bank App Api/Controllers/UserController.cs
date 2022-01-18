@@ -14,6 +14,7 @@ using static Bank_App_Api.Helper_Classes.RecoveryKeyGen;
 using static Bank_App_Api.Helper_Classes.Salting;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Bank_App_Api.Helper_Classes;
 
 namespace Bank_App_Api.Controllers
 
@@ -43,6 +44,67 @@ namespace Bank_App_Api.Controllers
         public ActionResult Get(string username) =>
            Ok(_users.GetUser(username).Result);
 
+        //Create
+        [HttpPost]
+        public ActionResult Create([FromBody] string StrbytesEnc)
+        {
+            try
+            {
+                //Checking if user already exits by username or email
+
+                //Converts from bytes and enables it into the req model
+                var ApiReqModelEnc = JsonConvert.DeserializeObject<APIReqModel>(StrbytesEnc);
+                
+                //Standard salt for user creation only
+                var salt = "13334448853"; 
+
+                //Matches requirements for tokenid + creation info
+                if (ApiReqModelEnc.Token != "1666723Dx" && ApiReqModelEnc.Username != "UserCreationTemp563") 
+                    return BadRequest();
+
+                //Decrypts the json
+                var crypt = new Crypt();
+                var stringConvertedDeC = Convert.ToBase64String( crypt.Decrypter(ApiReqModelEnc.Json, salt));
+                var user = JsonConvert.DeserializeObject<NewUserModel>(stringConvertedDeC);
+
+                var matchUserName = _users.GetUser(user.UserName).Result;
+                if (matchUserName != null || _users.GetUserByEmail(user.Email).Result != null)
+                {
+                    if (matchUserName != null)
+                        return BadRequest("UserName already exists!");
+                    else
+                    {
+                        return BadRequest("Email already exists!");
+                    }
+                }
+                var recoveryCodes = GenerateRecovery();
+
+                _users.Create(new UserModel
+                {
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    UserType = user.UserType,
+                }).Wait();
+
+                var id = _users.GetUserByEmail(user.Email).Result.Id;
+                var hash = HashSalt(user.Password, null);
+
+                _login.Create(new LoginModel { Id = id, UserName = user.UserName, Email = user.Email, Password = hash.Pass, Recovery = recoveryCodes.HashKey });
+                Task.Run(() => _salt.Create(new SaltModel(id, Convert.ToBase64String(GenerateSalt()), hash.Salt, recoveryCodes.SaltKey)));
+                Task.WaitAll();
+                return Ok(new APIReqModel { Json = string.Join(",", recoveryCodes.Key.ToArray()) });
+            }
+            catch
+            {
+                //  return BadRequest();
+                throw new Exception("Error code 3.2 - UserController Post Create user error");
+            }
+        }
+
+
+        /*
         //Create
         [HttpPost]
         public ActionResult Create([FromBody] JsonElement jsUser)
@@ -86,7 +148,7 @@ namespace Bank_App_Api.Controllers
                 throw new Exception("Error code 3.2 - UserController Post Create user error");
             }
         }
-
+        */
         [HttpPut]
         public ActionResult Update(string username, JsonElement jsUser)
         {

@@ -8,9 +8,13 @@ namespace Bank_App_Api.Models
     public class APIReqModel : IAPIReqModel
     {
         public string Json { get; set; }
+        public string Token { get; set; }
+        public string Username { get; set; }
     }
     public interface IAPIReqModel
     {
-        public string Json { get; set; }
+        string Json { get; set; }
+        string Token { get; set; }
+        string Username { get; set; }
     }
 }
