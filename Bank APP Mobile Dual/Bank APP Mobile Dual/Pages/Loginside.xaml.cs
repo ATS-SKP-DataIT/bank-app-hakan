@@ -22,6 +22,7 @@ namespace Bank_APP_Mobile_Dual.Pages
 
         private void SignIn_Clicked(object sender, EventArgs e)
         {
+
             /*
             var sendreqTask = Task.Run(() => SendRequest(JsonConvert.SerializeObject(
                 new APILoginModel

@@ -48,6 +48,7 @@ namespace Bank_APP_Mobile_Dual.Pages
                 EntryList[1].Text); //Password
             Crypt crypt = new Crypt();
             Task.Run(() => SendRequest(crypt.Encrypter(JsonConvert.SerializeObject(newUser), "13334448853"), "user", "UserCreationTemp563"));
+
         }
 
 
