@@ -15,6 +15,7 @@ using static Bank_App_Api.Helper_Classes.Salting;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Bank_App_Api.Helper_Classes;
+using System.Text;
 
 namespace Bank_App_Api.Controllers
 
@@ -44,16 +45,17 @@ namespace Bank_App_Api.Controllers
         public ActionResult Get(string username) =>
            Ok(_users.GetUser(username).Result);
 
+        /*
         //Create
         [HttpPost]
-        public ActionResult Create([FromBody] string StrbytesEnc)
+        public ActionResult Create([FromBody] JsonElement EncryptedMsg)
         {
             try
             {
                 //Checking if user already exits by username or email
 
                 //Converts from bytes and enables it into the req model
-                var ApiReqModelEnc = JsonConvert.DeserializeObject<APIReqModel>(StrbytesEnc);
+                var ApiReqModelEnc = JsonConvert.DeserializeObject<APIReqModel>(EncryptedMsg.GetString());
                 
                 //Standard salt for user creation only
                 var salt = "13334448853"; 
@@ -103,8 +105,7 @@ namespace Bank_App_Api.Controllers
             }
         }
 
-
-        /*
+        */
         //Create
         [HttpPost]
         public ActionResult Create([FromBody] JsonElement jsUser)
@@ -112,8 +113,17 @@ namespace Bank_App_Api.Controllers
             try
             {
                 //Checking if user already exits by username or email
-                var user = JsonConvert.DeserializeObject<NewUserModel>(jsUser.GetRawText());
-                var matchUserName = _users.GetUser(user.UserName).Result;
+                var APIReq = JsonConvert.DeserializeObject<APIReqModel>(jsUser.GetRawText());
+
+                var accessCode = Encoding.UTF8.GetString(APIReq.Username);
+                if (APIReq.Token != "1666723Dx" && accessCode != "UserCreationTemp563")
+                    return BadRequest();
+
+                Crypt crypt = new Crypt();
+                var decryptedJson = Encoding.UTF8.GetString(crypt.Decrypter(APIReq.Json, "13334448853"));
+                var decryptedUser = JsonConvert.DeserializeObject<NewUserModel>(decryptedJson);
+                /*
+                var matchUserName = _users.GetUser().Result;
                 if (matchUserName != null || _users.GetUserByEmail(user.Email).Result != null)
                 {
                     if (matchUserName != null)
@@ -141,6 +151,8 @@ namespace Bank_App_Api.Controllers
                 Task.Run(() => _salt.Create(new SaltModel(id, Convert.ToBase64String(GenerateSalt()), hash.Salt, recoveryCodes.SaltKey)));
                 Task.WaitAll();
                 return Ok(new APIReqModel { Json = string.Join(",", recoveryCodes.Key.ToArray()) });
+                */
+                return Ok();
             }
             catch
             {
@@ -148,7 +160,7 @@ namespace Bank_App_Api.Controllers
                 throw new Exception("Error code 3.2 - UserController Post Create user error");
             }
         }
-        */
+
         [HttpPut]
         public ActionResult Update(string username, JsonElement jsUser)
         {

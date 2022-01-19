@@ -46,8 +46,7 @@ namespace Bank_App_Api.Helper_Classes
             {
                 if (salt == null)
                     salt = CryptKey;
-                var js = JsonConvert.DeserializeObject<APIReqModel>(json);
-                return Task.Run(() => Decrypt(Convert.FromBase64String(js.Json), salt)).Result;
+                return Task.Run(() => Decrypt(Convert.FromBase64String(json), salt)).Result;
             }
             catch
             {
