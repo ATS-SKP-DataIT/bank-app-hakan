@@ -112,8 +112,16 @@ namespace Bank_App_Api.Controllers
         {
             try
             {
+
+                var testing = 
+                    Encoding.Unicode.GetString(
+                        Convert.FromBase64String(
+                            JsonConvert.DeserializeObject<EncAPIReqModel>(
+                                jsUser.GetRawText()).Json));
+
                 //Checking if user already exits by username or email
-                var APIReq = JsonConvert.DeserializeObject<APIReqModel>(jsUser.GetRawText());
+              //  var APIReq = JsonConvert.DeserializeObject<APIReqModel>(jsUser.GetRawText());
+                var APIReq = JsonConvert.DeserializeObject<APIReqModel>(testing);
 
                 var accessCode = Encoding.UTF8.GetString(APIReq.Username);
                 if (APIReq.Token != "1666723Dx" && accessCode != "UserCreationTemp563")
@@ -122,37 +130,32 @@ namespace Bank_App_Api.Controllers
                 Crypt crypt = new Crypt();
                 var decryptedJson = Encoding.UTF8.GetString(crypt.Decrypter(APIReq.Json, "13334448853"));
                 var decryptedUser = JsonConvert.DeserializeObject<NewUserModel>(decryptedJson);
-                /*
-                var matchUserName = _users.GetUser().Result;
-                if (matchUserName != null || _users.GetUserByEmail(user.Email).Result != null)
-                {
-                    if (matchUserName != null)
+                var test = _users.GetUser(decryptedUser.UserName).Result;
+                if ( test != null)
                         return BadRequest("UserName already exists!");
-                    else
-                    {
+
+                if (_users.GetUserByEmail(decryptedUser.Email).Result != null) 
                         return BadRequest("Email already exists!");
-                    }
-                }
+                
                 var recoveryCodes = GenerateRecovery();
 
                 _users.Create(new UserModel
                 {
-                    UserName = user.UserName,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    UserType = user.UserType,
+                    UserName = decryptedUser.UserName,
+                    FirstName = decryptedUser.FirstName,
+                    LastName = decryptedUser.LastName,
+                    Email = decryptedUser.Email,
+                    UserType = decryptedUser.UserType,
                 }).Wait();
                 
-                var id = _users.GetUserByEmail(user.Email).Result.Id;
-                var hash = HashSalt(user.Password, null);
+                var id = _users.GetUserByEmail(decryptedUser.Email).Result.Id;
+                var hash = HashSalt(decryptedUser.Password, null);
 
-                _login.Create(new LoginModel { Id = id, UserName = user.UserName, Email = user.Email, Password = hash.Pass, Recovery = recoveryCodes.HashKey });
+                _login.Create(new LoginModel { Id = id, UserName = decryptedUser.UserName, Email = decryptedUser.Email, Password = hash.Pass, Recovery = recoveryCodes.HashKey });
                 Task.Run(() => _salt.Create(new SaltModel(id, Convert.ToBase64String(GenerateSalt()), hash.Salt, recoveryCodes.SaltKey)));
                 Task.WaitAll();
                 return Ok(new APIReqModel { Json = string.Join(",", recoveryCodes.Key.ToArray()) });
-                */
-                return Ok();
+              //  return Ok();
             }
             catch
             {

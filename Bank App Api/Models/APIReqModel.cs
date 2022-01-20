@@ -17,4 +17,8 @@ namespace Bank_App_Api.Models
         string Token { get; set; }
         byte[] Username { get; set; }
     }
+    public class EncAPIReqModel
+    {
+        public string Json { get; set; }
+    }
 }
